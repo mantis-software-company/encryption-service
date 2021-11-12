@@ -1,0 +1,25 @@
+version: '3'
+services:
+  uwsgi:
+    image: mantissoftware/encryption-service
+    build:
+      context: ./
+    environment:
+      - FLASK_DEBUG=0
+      - UWSGI_HTTP_AUTO_CHUNKED=1
+      - UWSGI_HTTP_KEEPALIVE=1
+      - UWSGI_LAZY_APPS=1
+      - UWSGI_WSGI_ENV_BEHAVIOR=holy
+      - UWSGI_MASTER=1
+      - UWSGI_WORKERS=2
+      - UWSGI_THREADS=4
+      - __SERVICE_AES_KEY=OzmJQHX2OwHGiCuX9Cvr9Q== # CHANGE THIS BEFORE DEPLOY
+      - __SERVICE_AES_IV=q20P3ZpWh6DqeKzTpVJmpQ== # CHANGE THIS BEFORE DEPLOY
+  nginx:
+    image: nginx:1.13-alpine
+    volumes:
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf:ro
+    depends_on:
+      - uwsgi
+    ports:
+      - 80:80
