@@ -20,3 +20,5 @@ If you want to test service:
 ```
 docker-compose run
 ```
+
+http://localhost/swagger-ui to access swagger-ui
