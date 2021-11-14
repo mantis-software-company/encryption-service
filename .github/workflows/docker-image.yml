@@ -39,7 +39,15 @@ jobs:
         with:
           push: true
           tags: ${{ steps.meta.outputs.tags }}
-          labels: ${{ steps.meta.outputs.labels }}          
+          labels: ${{ steps.meta.outputs.labels }}       
+      - 
+        name: Push Readme to Docker Hub
+        uses: peter-evans/dockerhub-description@v2
+        with:
+          username: mantissoftware
+          password: ${{ secrets.DOCKER_REPO }}
+          repository: peterevans/dockerhub-description
+          readme-filepath: ./README.md
       -
         name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
