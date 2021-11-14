@@ -51,5 +51,5 @@ jobs:
         uses: peter-evans/dockerhub-description@v2
         with:
           username: mantissoftware
-          password: ${{ secrets.DOCKER_REPO }}
+          password: ${{ secrets.DOCKERHUB_PASS }}
           repository: mantissoftware/encryption-service
