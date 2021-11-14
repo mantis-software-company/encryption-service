@@ -47,7 +47,6 @@ jobs:
           username: mantissoftware
           password: ${{ secrets.DOCKER_REPO }}
           repository: peterevans/dockerhub-description
-          readme-filepath: ./README.md
       -
         name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
