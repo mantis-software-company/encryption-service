@@ -14,6 +14,10 @@ jobs:
   docker:
     runs-on: ubuntu-latest
     steps:
+      - 
+        name: Copy readme
+        run: |
+          cp README.md /tmp/repo/README.md
       -
         name: Set up QEMU
         uses: docker/setup-qemu-action@v1
@@ -44,13 +48,10 @@ jobs:
         name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
       - 
-        name: Check filepath
-        run: |
-          ls -la
-      - 
         name: Push Readme to Docker Hub
         uses: peter-evans/dockerhub-description@v2
         with:
           username: mantissoftware
           password: ${{ secrets.DOCKER_REPO }}
+          readme-filepath: /tmp/repo/README.md
           repository: mantissoftware/encryption-service
