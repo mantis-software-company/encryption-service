@@ -14,11 +14,9 @@ jobs:
   docker:
     runs-on: ubuntu-latest
     steps:
-      - 
-        name: Copy readme
-        run: |
-          mkdir -p /tmp/repo
-          cp README.md /tmp/repo/README.md
+      -
+        name: Checkout repo
+        uses: actions/checkout@v2
       -
         name: Set up QEMU
         uses: docker/setup-qemu-action@v1
@@ -54,5 +52,4 @@ jobs:
         with:
           username: mantissoftware
           password: ${{ secrets.DOCKER_REPO }}
-          readme-filepath: /tmp/repo/README.md
           repository: mantissoftware/encryption-service
