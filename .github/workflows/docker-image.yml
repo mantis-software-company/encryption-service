@@ -39,7 +39,12 @@ jobs:
         with:
           push: true
           tags: ${{ steps.meta.outputs.tags }}
-          labels: ${{ steps.meta.outputs.labels }}       
+          labels: ${{ steps.meta.outputs.labels }}
+
+      - 
+        name: Check filepath
+        run: |
+          ls -la
       - 
         name: Push Readme to Docker Hub
         uses: peter-evans/dockerhub-description@v2
