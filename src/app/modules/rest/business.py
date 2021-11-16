@@ -31,7 +31,7 @@ def encrypt_text(args):
 def decrypt_text(args):
     text = args.get('text')
     try:
-        text = base64.b64decode(text)
+        text = base64.b64decode(f"{text}==")
         text = unpad(_get_aes_cipher().decrypt(text), AES.block_size)
     except Exception as e:
         tb = traceback.format_exc()
