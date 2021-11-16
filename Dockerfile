@@ -6,5 +6,5 @@ RUN groupadd -r ${APP_USER} && useradd --no-log-init -r -g ${APP_USER} ${APP_USE
 RUN apt-get update && apt-get install -y --no-install-recommends uwsgi uwsgi-plugin-python3 python3-distutils && rm -rf /var/lib/apt/lists/* && pip install -r requirements.txt
 COPY ./src /app
 USER ${APP_USER}:${APP_USER}
-CMD [ "uwsgi", "--socket", "0.0.0.0:5000", "--protocol", "uwsgi", "--plugin","python3", "--ini", "/app/uwsgi.ini" ]
+CMD [ "uwsgi", "--http-socket", ":5000", "--plugin","python3", "--ini", "/app/uwsgi.ini" ]
 
