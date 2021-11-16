@@ -15,6 +15,7 @@ services:
       - UWSGI_THREADS=4
       - __SERVICE_AES_KEY=OzmJQHX2OwHGiCuX9Cvr9Q== # CHANGE THIS BEFORE DEPLOY
       - __SERVICE_AES_IV=q20P3ZpWh6DqeKzTpVJmpQ== # CHANGE THIS BEFORE DEPLOY
+      - __SERVICE_ACTUATOR_BASE_URI=http://localhost/actuator
   nginx:
     image: nginx:1.13-alpine
     volumes:
