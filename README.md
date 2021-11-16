@@ -30,4 +30,4 @@ To test your image, run  `docker-compose run` and go http://localhost/swagger-ui
 
 ## Deployment 
 
-> ⚠️ Don't forget to set __SERVICE_ACTUATOR_BASE_URI environment variable (Value: <protocol>://<deployment_url>/<actuator_path>)
+> ⚠️ Don't forget to set __SERVICE_ACTUATOR_BASE_URI environment variable (Value: http(s)://<deployment_url>/<actuator_path>)
